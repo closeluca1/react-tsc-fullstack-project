@@ -1,4 +1,4 @@
-import { useState, FormEvent, SetStateAction } from 'react'
+import { useState, FormEvent, SetStateAction, useEffect } from 'react'
 import { useContextService } from '../../SeriviceContext';
 
 import { Input } from '../Input';
@@ -16,6 +16,7 @@ export function LeadModal({visibility}:ClassProps) {
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [comment, setComment] = useState<string>('');
+  const [getDate] = useState<any>(new Date().toString())
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -26,6 +27,7 @@ export function LeadModal({visibility}:ClassProps) {
         email,
         phone,
         comment,
+        getDate,
       }
 
       if (name && email && phone && comment !== '') {
@@ -67,6 +69,7 @@ export function LeadModal({visibility}:ClassProps) {
           placeholder="Conte com detalher o que está acontecendo..."
           onChange={event => setComment(event.target.value)}
           required
+          maxLength={200}
         />
 
         <button

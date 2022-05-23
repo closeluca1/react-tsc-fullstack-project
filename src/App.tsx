@@ -2,6 +2,7 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Home } from "./views/Home";
 import { Hint } from "./views/Hint";
+import { Feedbacks } from './views/Feedbacks';
 import { NotFoundView } from "./views/NotFoundView";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,6 +21,7 @@ export function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='hint' element={<Hint />} />
+            <Route path='/comentarios' element={<Feedbacks/>}/>
 
             {/* <Route path='*'>
             <NotFoundView/>

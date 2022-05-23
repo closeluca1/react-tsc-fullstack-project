@@ -66,9 +66,9 @@ export function Home() {
 
           <CardVertical
             title='feedbacks'
-            id='itemAnime'
+            id='leads'
             optionChoose={handleService}
-            href='/hint'
+            href='/comentarios'
           />
 
         </div>

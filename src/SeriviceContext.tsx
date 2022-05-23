@@ -19,6 +19,7 @@ interface ServiceChooseProps {
   setModalVisible: any;
   modalVisible: boolean;
   openModal: () => void;
+  getFeedback: () => void;
 }
 
 export const ServiceContext = createContext({} as ServiceChooseProps)
@@ -54,8 +55,13 @@ export const FuncService = ({ children }: ServiceProvideProps) => {
     return addDoc(refService, newLead)
   }
 
+  const refFeedback = collection(db, 'leads')
+  const getFeedback = () => {
+    return getDocs(refFeedback)
+  }
+
   return (
-    <ServiceContext.Provider value={{ handleService, setTypeService, typeService, refService, getItem, createLead, setModalVisible, modalVisible, openModal }}>
+    <ServiceContext.Provider value={{ handleService, setTypeService, typeService, refService, getItem, createLead, setModalVisible, modalVisible, openModal, getFeedback }}>
       {children}
     </ServiceContext.Provider>
   )
