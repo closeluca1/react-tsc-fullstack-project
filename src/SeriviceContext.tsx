@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 import { db } from './database';
-import { collection, getDocs } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 
 interface ServiceProvideProps {
   children: ReactNode;
@@ -15,6 +15,10 @@ interface ServiceChooseProps {
   typeService: string;
   refService: any;
   getItem: () => void;
+  createLead: any;
+  setModalVisible: any;
+  modalVisible: boolean;
+  openModal: () => void;
 }
 
 export const ServiceContext = createContext({} as ServiceChooseProps)
@@ -23,13 +27,20 @@ export const FuncService = ({ children }: ServiceProvideProps) => {
 
   const [typeService, setTypeService] = useState<null | any>('movieLiveAction');
 
-
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleService = (service: any) => {
 
     service = service.currentTarget.getAttribute('data-value');
     setTypeService(service);
     // console.log(typeService);
+
+  }
+
+  function openModal () {
+    if (modalVisible !== null){
+      setModalVisible(true);
+    }
   }
 
   const refService = collection(db, typeService);
@@ -38,8 +49,13 @@ export const FuncService = ({ children }: ServiceProvideProps) => {
     return getDocs(refService)
   };
 
+ 
+  const createLead = (newLead: object) => {
+    return addDoc(refService, newLead)
+  }
+
   return (
-    <ServiceContext.Provider value={{ handleService, setTypeService, typeService, refService, getItem }}>
+    <ServiceContext.Provider value={{ handleService, setTypeService, typeService, refService, getItem, createLead, setModalVisible, modalVisible, openModal }}>
       {children}
     </ServiceContext.Provider>
   )

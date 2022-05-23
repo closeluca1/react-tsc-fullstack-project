@@ -4,15 +4,16 @@ interface CardVerticalProps {
   title: string;
   id: string;
   optionChoose: () => void;
+  href: string;
 }
 
-export function CardVertical({title, optionChoose,id}:CardVerticalProps) {
+export function CardVertical({title, optionChoose,id, href}:CardVerticalProps) {
   return (
-    <article className='h-[345px] md:h-auto flex flex-col justify-between p-8 rounded-lg bg-gray-300'>
-      <h2 className='text-2xl text-center uppercase font-semibold'>{title}</h2>
+    <article className='h-96 md:h-auto flex flex-col justify-between p-8 rounded-lg bg-gray-300'>
+      <h2 className='text-1xl md:text-2xl text-center break-words md:break-normal uppercase font-semibold'>{title}</h2>
 
       <div className='w-full flex justify-end -mb-2 bg-orange-400'>
-        <Link to='/hint'><button onClick={optionChoose} data-value={id} className='bg-red-400'>ver</button></Link>
+        <Link to={href}><button onClick={optionChoose} data-value={id} className='bg-red-400'>ver</button></Link>
       </div>
 
     </article>

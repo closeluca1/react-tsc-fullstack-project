@@ -1,12 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 export function Header() {
-  return(
-    <div>
-      <Link to='/'>home</Link>
-      <br/>
-      <Link to='hint'>sugestão</Link>      
-    </div>
+  return (
+    <Link to='/'>
+      <h1 className='text-center text-3xl font-semibold uppercase my-5'>a boa do dia</h1>
+    </Link>
   )
 }
