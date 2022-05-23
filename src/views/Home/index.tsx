@@ -61,7 +61,7 @@ export function Home() {
             title='versões'
             id='itemSerie'
             optionChoose={handleService}
-            href='/hint'
+            href='#'
           />
 
           <CardVertical
@@ -79,7 +79,7 @@ export function Home() {
             title='sugestões anteriores'
             id='itemLiveAction'
             optionChoose={handleService}
-            href='hint'
+            href='#'
           />
 
           <CardHorizontal
