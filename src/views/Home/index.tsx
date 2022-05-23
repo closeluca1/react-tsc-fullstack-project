@@ -18,13 +18,13 @@ export function Home() {
           
           <CardHorizontal
             title='Live Action'
-            id='movieLiveAction'
+            id='itemLiveAction'
             optionChoose={handleService}
           />
 
           <CardHorizontal
             title='Animação'
-            id='movieAnimation'
+            id='itemAnimation'
             optionChoose={handleService}
           />
 
@@ -34,12 +34,14 @@ export function Home() {
           
           <CardVertical
             title='Seriado'
-            optionChoose={() => console.log('Serie')}
+            id='itemSerie'
+            optionChoose={handleService}
           />
 
           <CardVertical
             title='Animê'
-            optionChoose={() => console.log('anime')}
+            id='itemAnime'
+            optionChoose={handleService}
           />
 
         </div>

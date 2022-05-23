@@ -12,7 +12,7 @@ export function CardHorizontal({title, optionChoose, id}:CardHorizontalProps) {
       <h2 className='text-2xl font-semibold uppercase mb-8'>{title}</h2>
 
       <div className='w-full flex justify-end -mb-6 bg-orange-400'>
-       <Link to='/'> <button onClick={optionChoose} data-value={id} className='bg-red-400'>ver</button></Link>
+       <Link to='/hint'> <button onClick={optionChoose} data-value={id} className='bg-red-400'>ver</button></Link>
       </div>
     </article>
   )

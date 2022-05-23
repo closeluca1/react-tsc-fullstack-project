@@ -1,5 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
+import { db } from './database';
+import { collection, getDocs } from 'firebase/firestore';
+
 interface ServiceProvideProps {
   children: ReactNode;
 }
@@ -10,29 +13,33 @@ interface ServiceChooseProps {
   handleService: any;
   setTypeService: any;
   typeService: string;
+  refService: any;
+  getItem: () => void;
 }
 
 export const ServiceContext = createContext({} as ServiceChooseProps)
 
 export const FuncService = ({ children }: ServiceProvideProps) => {
 
-  let [typeService, setTypeService] = useState<null | any>(null);
+  const [typeService, setTypeService] = useState<null | any>('movieLiveAction');
+
 
 
   const handleService = (service: any) => {
 
     service = service.currentTarget.getAttribute('data-value');
-    typeService = service
-    console.log(typeService)
-
+    setTypeService(service);
+    // console.log(typeService);
   }
 
-  // setTypeService(handleService);
+  const refService = collection(db, typeService);
 
-  // console.log(handleService)
+  const getItem = () => {
+    return getDocs(refService)
+  };
 
   return (
-    <ServiceContext.Provider value={{ handleService, setTypeService, typeService }}>
+    <ServiceContext.Provider value={{ handleService, setTypeService, typeService, refService, getItem }}>
       {children}
     </ServiceContext.Provider>
   )

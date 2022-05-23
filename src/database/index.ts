@@ -1,10 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
+import 'dotenv';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDOsTUS2PJtaiQx0ovJWPHqybbEl2oMEdU",
-  projectId: "appaboadodia",
-  appId: "1:798994675236:web:9af965052fafc17cd38ab1"
+  apiKey: import.meta.env.VITE_API_KEY,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig)
